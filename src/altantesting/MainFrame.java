@@ -6,6 +6,7 @@
 package altantesting;
 
 import avanzadagroup.net.altanAPI.*;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -54,6 +55,8 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         ICCTF = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        fileTF = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -128,7 +131,15 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel9.setText("ICC");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel10.setText("Altan Manual Testing v1.0");
+        jLabel10.setText("Altan Manual Testing v1.1");
+        jLabel10.setToolTipText("");
+
+        jButton1.setText("BatchFile");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -167,21 +178,23 @@ public class MainFrame extends javax.swing.JFrame {
                                         .addGap(85, 85, 85)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel5)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(requestCB, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(sendBttn))
+                                            .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel3)
-                                                    .addComponent(jLabel8))
+                                                    .addComponent(jLabel8)
+                                                    .addComponent(jButton1))
                                                 .addGap(18, 18, 18)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                     .addComponent(accessCodeTF)
                                                     .addGroup(layout.createSequentialGroup()
                                                         .addGap(0, 0, Short.MAX_VALUE)
-                                                        .addComponent(orderIdTF, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel5)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(requestCB, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(sendBttn))))
+                                                        .addComponent(orderIdTF, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(fileTF)))))
                                     .addComponent(ICCTF, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -213,12 +226,15 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(offeringCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(orderIdTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
+                .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(locationTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(locationTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fileTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -230,13 +246,14 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(ICCTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(requestTypeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(requestCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel5)
-                        .addComponent(sendBttn)))
+                        .addComponent(sendBttn))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(requestTypeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
@@ -244,15 +261,15 @@ public class MainFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void addText(String text){
+
+    private void addText(String text) {
         jTextPane1.setText(jTextPane1.getText() + "\n" + text);
     }
-    
+
     private void sendBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendBttnActionPerformed
         String selectedItem = (String) requestCB.getSelectedItem();
-        
 
+        String operation = "";
         switch (selectedItem) {
             ////Security
             case "AccessToken":
@@ -260,18 +277,18 @@ public class MainFrame extends javax.swing.JFrame {
                 accessCodeTF.setText(oauth.getToken().getAccessToken());
                 addText("Access Token is " + oauth.getToken().getAccessToken());
                 break;
-                
+
             //Serviciability
             case "Serviciability":
                 Coverage coverage = new Coverage();
                 String coverageResult = coverage.check(accessCodeTF.getText(), locationTF.getText()).getResult();
                 addText("Coverage is " + coverageResult);
                 break;
-            
+
             ////Configuracion
             case "Estado de una orden":
-                addText("OrderStatus:\n" + 
-                        new OrderStatus().
+                addText("OrderStatus:\n"
+                        + new OrderStatus().
                                 status(orderIdTF.getText()).getJsonResponse());
                 break;
 
@@ -284,61 +301,88 @@ public class MainFrame extends javax.swing.JFrame {
             case "Suspender MSISDN":
                 addText(new Suspend().suspend(msisdnTF.getText()).getJsonResponse());
                 break;
-                
+
             case "Reanudar MSISDN":
                 addText(new Resume().resume(msisdnTF.getText()).getJsonResponse());
                 break;
 
             case "Activar Oferta MSISDN":
                 String selectedOffer = (String) offeringCB.getSelectedItem();
-                
+
                 String selected[] = selectedOffer.split("\\|");
-                
+
                 String offeringId = selected[0];
-                
+
                 //addText(offeringId);
-                
-                addText("Activar Oferta: \n" + 
-                        new Activation().activate(msisdnTF.getText(), 
-                        offeringId, locationTF.getText()).getJsonResponse());
+                addText("Activar Oferta: \n"
+                        + new Activation().activate(msisdnTF.getText(),
+                                offeringId, locationTF.getText()).getJsonResponse());
                 break;
-                
+
             case "Compra de Bonos":
-                addText("CompraBonos: \n" + 
-                        new Purchase().activate(msisdnTF.getText(), 
+                addText("CompraBonos: \n"
+                        + new Purchase().activate(msisdnTF.getText(),
                                 offeringCB.getSelectedItem().toString().
                                         split("\\|")[0]).getJsonResponse());
                 break;
-                
-                
+
             case "Cambiar Oferta Primaria":
-                addText("Subscriber Patch Offering:\n" + 
-                        new SubscriberPatch().changePrimaryOffer(
-                        msisdnTF.getText(), offeringCB.getSelectedItem().toString().
-                                        split("\\|")[0], locationTF.getText()
+                addText("Subscriber Patch Offering:\n"
+                        + new SubscriberPatch().changePrimaryOffer(
+                                msisdnTF.getText(), offeringCB.getSelectedItem().toString().
+                                split("\\|")[0], locationTF.getText()
                         ).getJsonResponse()
                 );
                 break;
-                
+
             case "Cambio de SIM":
-                addText("Subscriber Patch ICC:\n" + 
-                        new SubscriberPatch().changeICC(
-                        msisdnTF.getText(), ICCTF.getText()
+                addText("Subscriber Patch ICC:\n"
+                        + new SubscriberPatch().changeICC(
+                                msisdnTF.getText(), ICCTF.getText()
                         ).getJsonResponse()
                 );
-                break;    
-                
-            case "Bloquear IMEI": 
-            case "Desbloquear IMEI":
-                addText(selectedItem + "\n" +
-                        new IMEI().operation(imeiTF.getText(), 
-                                selectedItem.equals("Bloquear IMEI")?"lock":"unlock").
-                                getJsonResponse());
-                
                 break;
+
+            case "Bloquear IMEI":
+            case "Desbloquear IMEI":
+                addText(selectedItem + "\n"
+                        + new IMEI().operation(imeiTF.getText(),
+                                selectedItem.equals("Bloquear IMEI") ? "lock" : "unlock").
+                                getJsonResponse());
+
+                break;
+
+            //Clientes Batch
+            case "Activar Oferta MSISDNs":                
+            case "Suspender MSISDNs":
+            case "Compra Bonos a MSISDNs":
+            case "Reanudar MSISDNs":
+            case "Reactivar MSISDNs":
+            case "Baja MSISDNs":
+            case "Cambio Oferta primaria MSISDNs":
                 
+                if (selectedItem.equals("Activar Oferta MSISDNs")){
+                    operation = "activations";
+                } else if (selectedItem.equals("Suspender MSISDNs")){
+                    operation = "suspends";
+                }else if (selectedItem.equals("Compra Bonos a MSISDNs")){
+                    operation = "purchasessupplementary";
+                }else if (selectedItem.equals("Reanudar MSISDNs")){
+                    operation = "resumes";
+                }else if (selectedItem.equals("Reactivar MSISDNs")){
+                    operation = "reactivates";
+                }else if (selectedItem.equals("Baja MSISDNs")){
+                    operation = "deactivates";
+                }else if (selectedItem.equals("Cambio Oferta primaria MSISDNs")){
+                    operation = "changesprimary";
+                }
+                
+                addText(new Batch().activate(fileTF.getText(), "activations").getJsonResponse());
+
+                break;
+
     }//GEN-LAST:event_sendBttnActionPerformed
- }
+    }
     private void msisdnTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_msisdnTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_msisdnTFActionPerformed
@@ -385,33 +429,42 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void requestCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestCBActionPerformed
         String selectedRequest = (String) requestCB.getSelectedItem();
-        
-        switch (selectedRequest){
+
+        switch (selectedRequest) {
             case "Activar Oferta MSISDN":
-            case "Cambiar Oferta Primaria":                
+            case "Cambiar Oferta Primaria":
                 offeringCB.setModel(new javax.swing.DefaultComboBoxModel<>(
-                        new String[]{"1000000030|T1-HBBIH-Postpaid Default", 
+                        new String[]{"1000000030|T1-HBBIH-Postpaid Default",
                             "1101000030|NETWEY-HBBIH-0 Pos 10 ONEOFF",
-                            "1102000030|NETWEY-HBBIH-0 Pos 20 ONEOFF", 
+                            "1102000030|NETWEY-HBBIH-0 Pos 20 ONEOFF",
                             "1001000537|T1-HBBIH-5 Pos 10 FUP",
-                            "1002001037|T1-HBBIH-10 Pos 20 FUP", 
+                            "1002001037|T1-HBBIH-10 Pos 20 FUP",
                             "1002001030|T1-HBBIH-10 Pos 20 FUP Unlimit"}));
                 break;
-                
+
             case "Compra de Bonos":
                 offeringCB.setModel(new javax.swing.DefaultComboBoxModel<>(
                         new String[]{"1201000230|NETWEY-HBBIH-Pos Add 2G",
-                        "1201000530|NETWEY-HBBIH-Pos Add 5G", 
-                        "1202000230|NETWEY-HBBIH-20 Pos Add 2G", 
-                        "1202000530|NETWEY-HBBIH-20 Pos Add 5G",
-                        "1201000236|T1-HBBIH-Pos Add 2G",
-                        "1201000536|T1-HBBIH-Pos Add 5G",
-                        "1201001036|T1-HBBIH-Pos Add 10G"}));
-                break;                
-        
+                            "1201000530|NETWEY-HBBIH-Pos Add 5G",
+                            "1202000230|NETWEY-HBBIH-20 Pos Add 2G",
+                            "1202000530|NETWEY-HBBIH-20 Pos Add 5G",
+                            "1201000236|T1-HBBIH-Pos Add 2G",
+                            "1201000536|T1-HBBIH-Pos Add 5G",
+                            "1201001036|T1-HBBIH-Pos Add 10G"}));
+                break;
+
         }
-        
+
     }//GEN-LAST:event_requestCBActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        final JFileChooser fc = new JFileChooser();
+        int returnVal = fc.showOpenDialog(MainFrame.this);
+
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            fileTF.setText(fc.getSelectedFile().getAbsolutePath());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -452,7 +505,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField ICCTF;
     private javax.swing.JTextField accessCodeTF;
     private javax.swing.JLabel accessTokebLb;
+    private javax.swing.JTextField fileTF;
     private javax.swing.JTextField imeiTF;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
