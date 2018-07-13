@@ -131,7 +131,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel9.setText("ICC");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel10.setText("Altan Manual Testing v1.1");
+        jLabel10.setText("Altan Manual Testing v1.2");
         jLabel10.setToolTipText("");
 
         jButton1.setText("BatchFile");
@@ -293,6 +293,16 @@ public class MainFrame extends javax.swing.JFrame {
                 break;
 
             ///Client Management
+            case "Baja de MSISDN":
+                addText("Deactivate " + new Deactivate().
+                        deactivate(msisdnTF.getText()).getJsonResponse());                
+                break;
+                
+            case "Reactivar MSISDN":
+                addText("Reactivate " + new Reactivate().
+                        reactivate(msisdnTF.getText()).getJsonResponse());
+                break;
+                
             case "Consultar Perfil":
                 Profile profile = new Profile();
                 addText("Profile Result: \n" + profile.sendRequest(

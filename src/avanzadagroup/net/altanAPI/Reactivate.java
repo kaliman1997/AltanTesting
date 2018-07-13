@@ -18,10 +18,10 @@ import org.json.*;
  *
  * @author Arturo Ruiz
  */
-public class Deactivate {
+public class Reactivate {
 	DeactivateResponse dr = new DeactivateResponse();
 
-	public DeactivateResponse deactivate(String MSISDN) {
+	public DeactivateResponse reactivate(String MSISDN) {
 		OAuth oauth = new OAuth();
 		
 		String response = sendRequest(oauth.getToken().getAccessToken(), MSISDN);		
@@ -39,7 +39,6 @@ public class Deactivate {
 				String responseJSON = responseValues[1];
 				System.out.println(responseCode);
 				JSONObject jsonObj = new JSONObject(responseJSON);
-                                
                                 dr.setJsonResponse(response); 
                                 
 				if (responseCode.equals("200")) {
@@ -103,7 +102,7 @@ public class Deactivate {
 		HttpURLConnection connection = null;
 		try {
 			url = new URL("https://altanredes-prod.apigee.net/"
-					+ "cm/v1/subscribers/"+msisdn+"/deactivate");
+					+ "cm/v1/subscribers/"+msisdn+"/reactivate");
 			connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("POST");
 			connection.setRequestProperty("authorization", "Bearer " + accessToken);
